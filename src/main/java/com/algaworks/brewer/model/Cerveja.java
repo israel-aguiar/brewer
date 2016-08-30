@@ -13,6 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -33,32 +37,43 @@ public class Cerveja implements Serializable {
 	private Long codigo;
 
 	@SKU
-	@NotBlank(message = "SKU: não pode estar vazio.")
+	@NotBlank(message = "SKU: não pode estar vazio")
 	private String sku;
 	
-	@NotBlank(message = "nome: não pode estar vazio.")
+	@NotBlank(message = "nome: não pode estar vazio")
 	private String nome;
 	
-	@Size(max = 50, message = "descrição: Limite de caracteres excedido.")
+	@NotBlank(message = "A descrição é obrigatória")
+	@Size(max = 50, message = "descrição: Limite de caracteres excedido")
 	private String descricao;
 	
-	
+	@NotNull(message = "O valor é obrigatório")
+	@DecimalMax(value = "9999999.99", message = "O valor da cerveja deve ser menor ou igual a R$ 9.999.999,99")
+	@DecimalMin(value = "1.00", message = "O valor deve ser maior ou igual a R$ 1,00")
 	private BigDecimal valor;
 	
+	
+	@NotNull(message = "O teor alcóolico é obrigatório")
+	@DecimalMax(value = "50.00", message = "O valor do teor alcóolico deve ser menor ou igual a 50")
 	@Column(name = "teor_alcoolico")
 	private BigDecimal teorAlcoolico;
 	
+	@DecimalMax(value = "10.00", message = "O valor da comissão deve ser menor ou igual a 10")
 	private BigDecimal comissao;
-	
+
+	@Max(value = 9999, message = "A quantidade em estoque deve ser menor que 9.999")
 	@Column(name = "quantidade_estoque")
 	private Integer quantidadeEstoque;
 	
+	@NotNull(message = "A origem é obrigatória")
 	@Enumerated(EnumType.STRING)
 	private Origem origem;
 	
+	@NotNull(message = "O sabor é obrigatório")
 	@Enumerated(EnumType.STRING)
 	private Sabor sabor;
 	
+	@NotNull(message = "O estilo é obrigatório")
 	@ManyToOne
 	@JoinColumn(name = "codigo_estilo")
 	private Estilo estilo;
