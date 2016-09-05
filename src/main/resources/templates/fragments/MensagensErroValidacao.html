@@ -2,7 +2,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 
-	<div class="alert  alert-danger  alert-dismissible" role="alert" th:if="${#fields.hasAnyErrors()}">
+	<div class="alert  alert-danger  alert-dismissible" role="alert" th:if="${#fields.hasAnyErrors()}" th:fragment="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		<th:block th:each="detailError : ${#fields.detailedErrors()}">
 		<div><i class="fa  fa-exclamation-circle"></i> [[${detailError.message}]]</div>
