@@ -19,25 +19,25 @@
 		
 		<div class="container-fluid">
 			<form method="POST" th:object="${usuario}" class="form-vertical  js-form-loading">
-					<div class="form-group">
+					<div class="form-group bw-required">
 						<label for="nome">Nome</label>
 						<input id="nome" th:field="*{nome}" type="text" class="form-control"/>
 					</div>
 					
 				<div class="row">
-					<div class="col-sm-8 form-group">
+					<div class="col-sm-8 form-group bw-required">
 						<label for="email">E-mail</label>
 						<input id="email" type="text" class="form-control"/>
 					</div>
 					
-					<div class="col-sm-4 form-group">
+					<div class="col-sm-4 form-group bw-required">
 						<label for="dataNascimento">Data de Nascimento</label>
 						<input id="dataNascimento" type="text" class="form-control"/>
 					</div>
 				</div>
 				
 				<div class="row">
-					<div class="col-sm-4 form-group">
+					<div class="col-sm-4 form-group bw-required">
 						<label for="senha">Senha</label>
 						<input id="senha" type="text" class="form-control"/>
 					</div>

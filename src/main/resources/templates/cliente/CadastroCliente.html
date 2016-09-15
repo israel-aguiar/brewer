@@ -16,13 +16,13 @@
 		
 		<div class="container-fluid">
 			<form method="POST" th:object="${cliente}" class="form-vertical  js-form-loading">
-					<div class="form-group">
-						<label for="nome">Nome*</label>
+					<div class="form-group bw-required">
+						<label for="nome">Nome</label>
 						<input id="nome" th:field="*{nome}" type="text" class="form-control"/>
 					</div>
 					
 				<div class="row">
-					<div class="col-sm-4 form-group">
+					<div class="col-sm-4 form-group bw-required">
 						<label>Tipo Pessoa</label>
 						<div>
 							<div class="radio radio-inline">
@@ -36,19 +36,19 @@
 						</div>
 					</div>
 					
-					<div class="col-sm-8 form-group">
-						<label for="cpfCnpj">CPF/CNPJ*</label>
+					<div class="col-sm-8 form-group bw-required">
+						<label for="cpfCnpj">CPF/CNPJ</label>
 						<input id="cpfCnpj" type="text" class="form-control"/>
 					</div>
 				</div>
 				
 				<div class="row">
-					<div class="col-sm-4 form-group">
+					<div class="col-sm-4 form-group bw-required">
 						<label for="telefone">Telefone</label>
 						<input id="telefone" type="text" class="form-control"/>
 					</div>
 					
-					<div class="col-sm-8 form-group">
+					<div class="col-sm-8 form-group bw-required">
 						<label for="email">E-mail</label>
 						<input id="email" type="text" class="form-control"/>
 					</div>
