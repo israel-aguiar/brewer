@@ -47,7 +47,7 @@ public class Cerveja implements Serializable {
 	private String nome;
 	
 	@NotBlank(message = "A descrição é obrigatória")
-	@Size(max = 50, message = "descrição: Limite de caracteres excedido")
+	@Size(max = 100, message = "descrição: Limite de caracteres excedido")
 	private String descricao;
 	
 	@NotNull(message = "O valor é obrigatório")
