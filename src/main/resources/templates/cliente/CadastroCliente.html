@@ -82,7 +82,7 @@
 						<div class="bw-field-action">
 							<select id="estado" class="form-control">
 								<option value="">Selecione o Estado</option>
-								<option value="1">Bahia</option>
+								<option th:each="estado : ${estados}" th:value="${estado.codigo}" th:text="${estado.nome}">Bahia</option>
 							</select>
 							<div class="bw-field-action__icon">
 								<a href="#" data-toggle="modal" data-target="#modalCadastroRapidoEstado">
