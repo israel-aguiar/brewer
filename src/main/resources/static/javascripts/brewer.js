@@ -41,6 +41,19 @@ Brewer.MaskPhoneNumber = (function() {
 	
 }());
 
+Brewer.MascaraCep = (function() {
+	
+	function MascaraCep() {
+		this.inputCpf = $('.js-input-cep');
+	}
+	
+	MascaraCep.prototype.iniciar = function() {
+		this.inputCpf.mask('00.000-000');
+	}
+	
+	return MascaraCep;
+	
+}());
 
 $(function() {
 	var maskMoney = new Brewer.MaskMoney();
@@ -48,4 +61,7 @@ $(function() {
 	
 	var maskPhoneNumber = new Brewer.MaskPhoneNumber();
 	maskPhoneNumber.enable();
+	
+	var mascaraCep = new Brewer.MascaraCep();
+	mascaraCep.iniciar();
 });
