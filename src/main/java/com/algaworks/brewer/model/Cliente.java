@@ -1,23 +1,59 @@
 package com.algaworks.brewer.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
+
 import org.hibernate.validator.constraints.NotBlank;
 
-public class Cliente {
+@Entity
+@Table(name = "cliente")
+public class Cliente implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long codigo;
+	
 	@NotBlank
 	private String nome;
-	private TipoPessoa tipoPessoa;
-	private String cpfCnpj;
-	private String telefone;
-	private String email;
-	private String logradouro;
-	private String numero;
-	private String complemento;
-	private String cep;
-	private Estado estado;
-	private Cidade cidade;
 	
+	@Enumerated(EnumType.STRING)
+	@JoinColumn(name = "tipo_pessoa")
+	private TipoPessoa tipoPessoa;
+	
+	@Column(name = "cpf_cnpj")
+	private String cpfOuCnpj;
+	
+	private String telefone;
+	
+	private String email;
+	
+	@Embedded
+	private Endereco endereco;
+
 	public Cliente() {
+	}
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNome() {
@@ -36,12 +72,12 @@ public class Cliente {
 		this.tipoPessoa = tipoPessoa;
 	}
 
-	public String getCpfCnpj() {
-		return cpfCnpj;
+	public String getCpfOuCnpj() {
+		return cpfOuCnpj;
 	}
 
-	public void setCpfCnpj(String cpfCnpj) {
-		this.cpfCnpj = cpfCnpj;
+	public void setCpfOuCnpj(String cpfCnpj) {
+		this.cpfOuCnpj = cpfCnpj;
 	}
 
 	public String getTelefone() {
@@ -60,52 +96,37 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public String getLogradouro() {
-		return logradouro;
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
-	public String getNumero() {
-		return numero;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
 	}
 
-	public void setNumero(String numero) {
-		this.numero = numero;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
 	}
 
-	public String getComplemento() {
-		return complemento;
-	}
-
-	public void setComplemento(String complemento) {
-		this.complemento = complemento;
-	}
-
-	public String getCep() {
-		return cep;
-	}
-
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
-
-	public Estado getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-
-	public Cidade getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
-	}
-	
 }
