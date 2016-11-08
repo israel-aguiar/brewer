@@ -10,7 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -43,7 +44,7 @@ public class Cliente implements Serializable{
 	
 	@NotNull(message = "Tipo pessoa é obrigatório")
 	@Enumerated(EnumType.STRING)
-	@JoinColumn(name = "tipo_pessoa")
+	@Column(name = "tipo_pessoa")
 	private TipoPessoa tipoPessoa;
 	
 	@NotBlank(message = "CPF/CNPJ é obrigatório")
@@ -59,6 +60,11 @@ public class Cliente implements Serializable{
 	
 	@Embedded
 	private Endereco endereco;
+	
+	@PrePersist @PreUpdate
+	private void preInsertPreUpdate() {
+		this.cpfOuCnpj = this.cpfOuCnpj.replaceAll("\\.|-|/", "");
+	}
 
 	public Cliente() {
 	}
