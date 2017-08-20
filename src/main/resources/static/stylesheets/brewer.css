@@ -150,6 +150,11 @@
 	text-align: right;
 }
 
+.table-clientes-col-cidade-estado {
+	width: 140px;
+	text-align: right;
+}
+
 .table-clientes-col-acoes {
 	width: 80px;
 }
