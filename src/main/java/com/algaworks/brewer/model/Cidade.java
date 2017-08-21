@@ -57,6 +57,10 @@ public class Cidade {
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
+	
+	public boolean temEstado() {
+		return estado != null;
+	}
 
 	@Override
 	public int hashCode() {
