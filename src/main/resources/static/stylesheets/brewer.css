@@ -159,3 +159,17 @@
 	width: 80px;
 }
 
+/* Colunas - Pesquisa de Clientes */
+.table-cidades-col-nome {
+
+}
+
+.table-cidades-col-estado {
+	width: 140px;
+	text-align: left;
+}
+
+.table-cidades-col-acoes {
+	width: 80px;
+}
+
