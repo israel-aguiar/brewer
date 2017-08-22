@@ -1,20 +1,16 @@
 package com.algaworks.brewer.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "grupo")
-public class Grupo implements Serializable{
+@Table(name = "permissao")
+public class Permissao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -23,22 +19,8 @@ public class Grupo implements Serializable{
 	private Long codigo;
 	
 	private String nome;
-	
-	@ManyToMany
-	@JoinTable(name = "grupo_permissao"
-				, joinColumns=@JoinColumn(name = "codigo_grupo")
-				, inverseJoinColumns = @JoinColumn(name = "codigo_permissao"))
-	private List<Permissao> permissoes;
 
-	public Grupo() {
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
+	public Permissao() {
 	}
 
 	public Long getCodigo() {
@@ -49,12 +31,12 @@ public class Grupo implements Serializable{
 		this.codigo = codigo;
 	}
 
-	public List<Permissao> getPermissoes() {
-		return permissoes;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setPermissoes(List<Permissao> permissoes) {
-		this.permissoes = permissoes;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	@Override
@@ -73,7 +55,7 @@ public class Grupo implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Grupo other = (Grupo) obj;
+		Permissao other = (Permissao) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -81,4 +63,6 @@ public class Grupo implements Serializable{
 			return false;
 		return true;
 	}
+	
+
 }
