@@ -2,7 +2,8 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/LayoutPadrao}">
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:brewer="http://brewer.algaworks.com">
 <head>
 	<title>Cadastro de usuário</title>
 	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/bootstrap-switch.min.css}"/>
@@ -19,31 +20,35 @@
 		
 		<div class="container-fluid">
 			<form method="POST" th:object="${usuario}" class="form-vertical  js-form-loading">
-					<div class="form-group bw-required">
-						<label for="nome">Nome</label>
-						<input id="nome" th:field="*{nome}" type="text" class="form-control"/>
+				<brewer:message/>
+				
+				<div class="row">
+					<div class="form-group col-sm-12 bw-required" brewer:classforerror="nome">
+						<label for="nome" class="control-label">Nome</label>
+						<input id="nome" type="text" class="form-control" th:field="*{nome}"/>
 					</div>
+				</div>
 					
 				<div class="row">
-					<div class="col-sm-8 form-group bw-required">
-						<label for="email">E-mail</label>
-						<input id="email" type="text" class="form-control"/>
+					<div class="col-sm-8 form-group bw-required" brewer:classforerror="email">
+						<label for="email" class="control-label">E-mail</label>
+						<input id="email" type="text" class="form-control" th:field="*{email}"/>
 					</div>
 					
 					<div class="col-sm-4 form-group bw-required">
-						<label for="dataNascimento">Data de Nascimento</label>
-						<input id="dataNascimento" type="text" class="form-control"/>
+						<label for="dataNascimento" class="control-label">Data de Nascimento</label>
+						<input id="dataNascimento" type="text" class="form-control" th:field="*{dataNascimento}"/>
 					</div>
 				</div>
 				
 				<div class="row">
 					<div class="col-sm-4 form-group bw-required">
-						<label for="senha">Senha</label>
+						<label for="senha" class="control-label">Senha</label>
 						<input id="senha" type="text" class="form-control"/>
 					</div>
 					
 					<div class="col-sm-4 form-group">
-						<label for="confirmacaoSenha">Confirmação de senha</label>
+						<label for="confirmacaoSenha" class="control-label">Confirmação de senha</label>
 						<input id="confirmacaoSenha" type="text" class="form-control"/>
 					</div>
 					
@@ -56,29 +61,26 @@
 				</div>
 				
 				<div class="row">
-					<div class="col-sm-4 form-group">
-						<label>Grupos</label>
-						<div class="form-group">
-							<label class="checkbox-inline">
-								<input type="checkbox" name="grupo" id="administrador"/>
-								Administrador
-							</label>
-							<label class="checkbox-inline">
-								<input type="checkbox" name="grupo" id="vendedor"/>
-								Vendedor
-							</label>
+					<div class="col-sm-6 form-group" brewer:classforerror="grupos">
+						<label class="control-label">Grupos</label>
+						<div>
+							<div class="checkbox checkbox-inline">
+								<input type="checkbox"/>
+								<label>Administrador</label>
+							</div>
+							<div class="checkbox checkbox-inline">
+								<input type="checkbox"/>
+								<label>Vendedor</label>
+							</div>
 						</div>
 					</div>
 				</div>
 				
-				<div class="form-group">
-					<button class="btn  btn-primary" type="submit">Salvar</button>
-				</div>
+				<button class="btn  btn-primary" type="submit">Salvar</button>
 
 			</form>
 		</div>
 		
-		<div th:replace="estado/CadastroRapidoEstado:: modal" ></div>
 	</section>
 	<th:block layout:fragment="javascript-extra">
 		<script th:src="@{/javascripts/vendors/bootstrap-switch.min.js}"></script>
