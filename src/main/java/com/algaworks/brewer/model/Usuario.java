@@ -17,6 +17,7 @@ import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.algaworks.brewer.validation.AtributoConfirmacao;
 
@@ -48,7 +49,7 @@ public class Usuario implements Serializable {
 	@Column(name = "data_nascimento")
 	private LocalDate dataNascimento;
 	
-//	@NotNull(message = "Selecione pelo menos um grupo")
+	@NotEmpty(message = "Selecione pelo menos um grupo")
 	@ManyToMany
 	@JoinTable(name = "usuario_grupo"
 				, joinColumns=@JoinColumn(name = "codigo_usuario")
