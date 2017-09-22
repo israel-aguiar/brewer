@@ -173,6 +173,11 @@
 	width: 80px;
 }
 
+/* Colunas - Pesquisa de usuários */
+.table-usuarios-col-status {
+	width: 30px;
+}
+
 /*
 ######################################
 # CUSTOMIZAÇÃO DE COMPONENTES
