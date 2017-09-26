@@ -94,7 +94,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="usuario : ${usuarios}">
+						<tr th:each="usuario : ${pagina.conteudo}">
 							<td>
 								<div class="checkbox aw-checkbox-no-margin" th:if="${#authentication.principal.usuario.codigo != usuario.codigo}">
 									<input type="checkbox" class="js-selecao" data:codigo="${usuario.codigo}" />
@@ -123,10 +123,16 @@
 								</a>
 							</td>
 						</tr>
+						
+						<tr th:if="${pagina.vazia}">
+							<td colspan="6">Nenhuma cerveja encontrada</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
 		
+			<brewer:pagination page="${pagina}"/>
+			
 		</div>
 	</section>
 	
