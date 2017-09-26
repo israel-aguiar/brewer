@@ -83,7 +83,6 @@ public class UsuariosController {
 	public void atualizarStatus(@RequestParam("codigos[]") Long[] codigos, @RequestParam("status") StatusUsuario statusUsuario) {
 		
 		Arrays.asList(codigos).forEach(System.out::println);
-		System.out.println("status: " + statusUsuario);
 		
 		cadastroUsuarioService.alterarStatus(codigos, statusUsuario);
 		
